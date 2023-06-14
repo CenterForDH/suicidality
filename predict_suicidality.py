@@ -68,7 +68,7 @@ def input_values():
     smoke   = smokeDict[smoke]
     
     alcohol = st.radio('ACOHOL CONSUMPTION PER MONTH', ('No','1-2','3-5','6-9','< 10'), horizontal=True)
-    alcoholDict = {'No':0,'1-2':1,'3-5':2,'6-9':4,'< 10':5}
+    alcoholDict = {'No':0,'1-2':1,'3-5':2,'6-9':3,'< 10':4}
     alcohol = alcoholDict[alcohol]
     
     stress  = st.radio('STRESS', ('Low','Moderate', 'High','Very much'), horizontal=True)
