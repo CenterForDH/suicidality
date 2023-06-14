@@ -4,7 +4,7 @@ import time
 
 st.set_page_config(layout="wide")
 
-@st.cache
+ @st.cache(allow_output_mutation=True).
 def model_file():
     mfile = 'finalized_model_adb.pkl'
     model = pickle.load(open(mfile, 'rb'))
