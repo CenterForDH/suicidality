@@ -22,8 +22,8 @@ def prediction(X_test):
 def set_bmi(bmi):
     x = 4
     if   bmi <  18.5           : x = 1
-    elif bmi >= 18.5 and x < 23: x = 2
-    elif bmi >= 23   and x < 25: x = 3
+    elif bmi >= 18.5 and bmi < 23: x = 2
+    elif bmi >= 23   and bmi < 25: x = 3
     elif bmi >= 25             : x = 4
 
     return x
@@ -36,11 +36,12 @@ def input_values():
 
     age     = st.radio('AGE (year)',(13,14,15,16,17,18), horizontal=True)
 
-    height  = st.number_input('Height (cm)',130)
-    weight  = st.number_input('Weight (kg)',50)
-    bmi = weight/((height/100)**2)
-    st.write('BMI ', round(bmi,2))
-    bmi = set_bmi(bmi)
+    height  = st.number_input('Height (cm)', min_value=80, max_value=190, value=130)
+    weight  = st.number_input('Weight (kg)', min_value=30, max_value=100, value=50)
+    bmiv = weight/((height/100)**2)
+    bmi = set_bmi(bmiv)
+    bmiDict = {1:'Underweight',2:'Normal',3:'Overweight',4:'Obesity'}
+    st.write('BMI: ', bmiDict[bmi], round(bmiv,2))
     
     region  = st.radio('REGION', ('Urban','Rural'), horizontal=True)
     regionDict = {'Urban':1,'Rural':2}
