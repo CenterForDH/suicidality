@@ -36,13 +36,12 @@ def input_values():
     econo   = st.slider('ECONOMIC STATUS',      1,   4,   1)
     parent  = st.slider('PARENT EDUCATION',     1,   4,   1)
     smoke   = st.slider('SMOKING STATUS',       0,   1,   1)
-    alcohol = st.slider('ACHOL CONSUMPTION',    0,   4,   0)
+    alcohol = st.slider('ACOHOL CONSUMPTION',    0,   4,   0)
     stress  = st.slider('STRESS',               6,   9,   6)
     depress = st.slider('DEPRESSION',           0,   1,   0)
     derma   = st.slider('DERMATIS',             0,   1,   0)
     asthma  = st.slider('ASTHMA',               0,   1,   0)
-    aad     = st.slider('AAD',                  0,   1,   0)
-
+    aad     = derma | asthma
 
     cols = ['SEX', 'age', 'bmi_2', 'region', 'education',
             'academic achievement', 'economic', 'parental education',
