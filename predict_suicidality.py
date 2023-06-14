@@ -47,11 +47,11 @@ def input_values():
     regionDict = {'Urban':1,'Rural':2}
     region  = regionDict[region]
     
-    educa   = st.radio('EDUCATION', ('Middle schole','High school'), horizontal=True)
-    educaDict = {'Middle schole':1,'High school':2}
+    educa   = st.radio('EDUCATION', ('Middle school','High school'), horizontal=True)
+    educaDict = {'Middle school':1,'High school':2}
     educa = educaDict[educa]
     
-    acad    = st.radio('ACADEMIC ACHIEVEMENT', ('Low', 'Low-middle','Middle','Upper-middle','Upper'), horizontal=True)
+    acad    = st.radio('ACADEMIC ACHIEVEMENT (Grade)', ('Low', 'Low-middle','Middle','Upper-middle','Upper'), horizontal=True)
     acadDict = {'Low':10, 'Low-middle':9,'Middle':8,'Upper-middle':7,'Upper':6}
     acad = acadDict[acad]
     
@@ -71,8 +71,8 @@ def input_values():
     alcoholDict = {'No':0,'1-2':1,'3-5':2,'6-9':4,'< 10':5}
     alcohol = alcoholDict[alcohol]
     
-    stress  = st.radio('STRESS', ('Mild','Moderate','High','Severe'), horizontal=True)
-    stressDict = {'Mild':6,'Moderate':7,'High':8,'Severe':9}
+    stress  = st.radio('STRESS', ('Low','Moderate', 'High','Very much'), horizontal=True)
+    stressDict = {'Low':6,'Moderate':7,'High':8,'Very much':9}
     stress = stressDict[stress]
     
     depress = st.radio('DEPRESSION', ('No','Yes'), horizontal=True)
