@@ -58,8 +58,8 @@ def input_values():
     incomeDict = {'1Q (Lowest)':1,'2Q':2,'3Q':3,'4Q (Highest)':4}
     income = incomeDict[income]
     
-    parent  = st.radio('PARENT EDUCATION (GRADUATION)', ('Middle school or lower','High school','University or higher'), horizontal=True)
-    parentDict = {'Middle school or lower':1,'High school':2,'University or higher':3}
+    parent  = st.radio('PARENT EDUCATION (GRADUATION)', ('Middle school or lower','High school','University or higher','Unknown'), horizontal=True)
+    parentDict = {'Middle school or lower':4,'High school':3,'University or higher':2,'Unknown':1}
     parent  = parentDict[parent]
     
     smoke   = st.radio('SMOKING STATUS', ('No','Yes'), horizontal=True)
