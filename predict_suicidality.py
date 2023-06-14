@@ -4,10 +4,15 @@ import time
 
 st.set_page_config(layout="wide")
 
-def prediction(X_test):
+@st.cache
+def model_file():
     mfile = 'finalized_model_adb.pkl'
     model = pickle.load(open(mfile, 'rb'))
+    
+    return model
 
+def prediction(X_test):
+    model = model_file()
     result = model.predict_proba([X_test])
     
     return result[0][1]
