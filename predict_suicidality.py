@@ -13,9 +13,8 @@ def model_file():
 
 
 def prediction(X_test):
-    st.write(X_test)
     model = model_file()
-    result = model.predict_proba(X_test)
+    result = model.predict_proba([X_test])
 
     return result[0][1]
 
@@ -92,7 +91,7 @@ def input_values():
     
     X_test = [sex,age,bmi,region,educa,
               acad,income,parent,
-              smoke,alcohol,stress,depress,derma,asthma,aad]
+              smoke,alcohol,stress,depress,derma,asthma]
 
     result = prediction(X_test)
 
