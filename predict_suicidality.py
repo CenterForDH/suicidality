@@ -13,7 +13,7 @@ def model_file():
 
 
 def prediction(X_test):
-    st.write(X_test)
+    st.write([X_test])
     model = model_file()
     result = model.predict_proba([X_test])
 
