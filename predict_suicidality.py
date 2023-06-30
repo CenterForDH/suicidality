@@ -72,7 +72,7 @@ def input_values():
     alcohol = alcoholDict[alcohol]
     
     stress  = st.radio('STRESS', ('Low','Moderate', 'High','Very much'), horizontal=True)
-    stressDict = {'Low':6,'Moderate':7,'High':8,'Very much':9}
+    stressDict = {'Low':1,'Moderate':2,'High':3,'Very much':4}
     stress = stressDict[stress]
     
     depress = st.radio('DEPRESSION', ('No','Yes'), horizontal=True)
