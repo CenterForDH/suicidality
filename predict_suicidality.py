@@ -4,6 +4,34 @@ import time
 
 st.set_page_config(layout="wide")
 
+footerText = """
+<style>
+#MainMenu {
+visibility:hidden ;
+}
+
+footer {
+visibility : hidden ;
+}
+
+.footer {
+position: fixed;
+left: 0;
+bottom: 0;
+width: 100%;
+background-color: white;
+color: black;
+text-align: center;
+}
+</style>
+
+<div class='footer'>
+<p> Copyright @ 2023 Center for Digital Health <a href="mailto:wycho@khu.ac.kr"> wycho@khu.ac.kr </a></p>
+</div>
+"""
+
+st.markdown(str(footerText), unsafe_allow_html=True)
+
 @st.cache_data
 def model_file():
     mfile = 'finalized_model_adb.pkl'
