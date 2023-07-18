@@ -110,7 +110,8 @@ def input_values():
     derma   = st.radio('Dermatis', ('No','Yes'), horizontal=True)
     dermaDict = {'No':0,'Yes':1}
     derma   = dermaDict[derma]
-    
+
+    asthma  = st.radio('Asthma', ('No','Yes'), horizontal=True)
     asthmaDict = {'No':0,'Yes':1}
     asthma  = asthmaDict[asthma] 
 
