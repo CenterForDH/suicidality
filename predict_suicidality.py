@@ -107,7 +107,7 @@ def input_values():
     depressDict = {'No':0,'Yes':1}
     depress = depressDict[depress]
     
-    derma   = st.radio('Atopic dermatis', ('No','Yes'), horizontal=True)
+    derma   = st.radio('Atopic dermatitis', ('No','Yes'), horizontal=True)
     dermaDict = {'No':0,'Yes':1}
     derma   = dermaDict[derma]
 
