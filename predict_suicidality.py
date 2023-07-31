@@ -39,7 +39,7 @@ text-align: center;
 </style>
 
 <div class='footer'>
-<p> Copyright @ 2023 Center for Digital Health <a href="mailto:wycho@khu.ac.kr"> wycho@khu.ac.kr </a></p>
+<p> Copyright @ 2023 Center for Digital Health <a href="mailto:iceanon1@khu.ac.kr"> iceanon1@khu.ac.kr </a></p>
 </div>
 """
 
