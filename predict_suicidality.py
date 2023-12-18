@@ -47,7 +47,7 @@ st.markdown(str(footerText), unsafe_allow_html=True)
 
 @st.cache_data
 def model_file():
-    mfile = 'suicidalthinking_finalized_model_adb.pkl'
+    mfile = 'finalized_model_adb.pkl'
     model = pickle.load(open(mfile, 'rb'))
 
     return model
