@@ -1,6 +1,10 @@
 import pickle
 import streamlit as st
 import time
+from datetime import datetime #add for time
+import pytz #add for time
+from pathlib import Path
+from sklearn.ensemble import RandomForestClassifier
 
 #st.set_page_config(layout="wide")
 
@@ -46,10 +50,11 @@ text-align: center;
 st.markdown(str(footerText), unsafe_allow_html=True)
 
 @st.cache_data
+#suicidalthinking_finalized_model_adb predict_suicidalthinking_model
 def model_file():
-    mfile = 'suicidalthinking_finalized_model_adb.pkl'
-    model = pickle.load(open(mfile, 'rb'))
-
+    mfile = str(Path(__file__).parent) + '/suicialthinking_finalized_model.pkl'
+    with open(mfile, 'rb') as file:
+        model = pickle.load(file)
     return model
 
 
@@ -60,76 +65,72 @@ def prediction(X_test):
     return result[0][1]
 
 
-def set_bmi(bmi):
+def set_bmi(BMI):
     x = 4
-    if   bmi <  18.5           : x = 1
-    elif bmi >= 18.5 and bmi < 23: x = 2
-    elif bmi >= 23   and bmi < 25: x = 3
-    elif bmi >= 25             : x = 4
+    if   BMI <  18.5           : x = 1
+    elif BMI >= 18.5 and BMI < 23: x = 2
+    elif BMI >= 23   and BMI < 25: x = 3
+    elif BMI >= 25             : x = 4
+    else : x = 0
 
     return x
 
 
 def input_values():
-    age     = st.radio('Age (year)',(13,14,15,16,17,18), horizontal=True)
+    Region of residence  = st.radio('Region of regidence', ('Urban','Rural'), horizontal=True)
+    Region of residenceDict = {'Urban':1,'Rural':2}
+    Region of residence  = Region of residence[Region of residenceDict]
 
-    sex     = st.radio('Sex',('Male','Female'), horizontal=True)
-    sexDict = {'Male':1,'Female':2}
-    sex = sexDict[sex]
+    Age   = st.radio('Age(year)',(13,14,15,16,17,18), horizontal=True)
+
+    Sex     = st.radio('Sex',('Male','Female'), horizontal=True)
+    SexDict = {'Male':1,'Female':2}
+    Sex = SexDict[Sex]
 
     height  = st.number_input('Height (cm)', min_value=80, max_value=190, value=130)
     weight  = st.number_input('Weight (kg)', min_value=30, max_value=100, value=50)
     bmiv = weight/((height/100)**2)
-    bmi = set_bmi(bmiv)
-    bmiDict = {1:'Underweight',2:'Normal',3:'Overweight',4:'Obesity'}
-    st.write('BMI: ', bmiDict[bmi], round(bmiv,2))
+    bmi_2 = set_bmi(bmiv)
+    BMI groupDict = {1:'Underweight',2:'Normal',3:'Overweight',4:'Obese'}
+    st.write('BMI: ', BMI groupDict[bmi_2], round(bmiv,2))
     
-    region  = st.radio('Region of regidence', ('Urban','Rural'), horizontal=True)
-    regionDict = {'Urban':1,'Rural':2}
-    region  = regionDict[region]
-      
-    acad    = st.radio('School performance', ('Low', 'Low-middle','Middle','Upper-middle','Upper'), horizontal=True)
-    acadDict = {'Low':10, 'Low-middle':9,'Middle':8,'Upper-middle':7,'Upper':6}
-    acad = acadDict[acad]
-    
-    income   = st.radio('Household income',('1Q (Lowest)','2Q','3Q','4Q (Highest)'), horizontal=True)
-    incomeDict = {'1Q (Lowest)':1,'2Q':2,'3Q':3,'4Q (Highest)':4}
-    income = incomeDict[income]
-    
-    parent  = st.radio('Parents\' highest education level', ('Middle school or lower','High school','University or higher','Unknown'), horizontal=True)
-    parentDict = {'Middle school or lower':4,'High school':3,'University or higher':2,'Unknown':1}
-    parent  = parentDict[parent]
-    
-    smoke   = st.radio('Smoking status', ('No','Yes'), horizontal=True)
-    smokeDict = {'No':0,'Yes':1}
-    smoke   = smokeDict[smoke]
-    
-    alcohol = st.radio('Acohol consumption per month', ('No','1-2','3-5','6-9','< 10'), horizontal=True)
-    alcoholDict = {'No':0,'1-2':1,'3-5':2,'6-9':3,'< 10':4}
-    alcohol = alcoholDict[alcohol]
-    
-    stress  = st.radio('Stress status', ('Low','Moderate', 'High','Very much'), horizontal=True)
-    stressDict = {'Low':1,'Moderate':2,'High':3,'Very much':4}
-    stress = stressDict[stress]
-    
-    depress = st.radio('Sadness and despair', ('No','Yes'), horizontal=True)
-    depressDict = {'No':0,'Yes':1}
-    depress = depressDict[depress]
-    
-    derma   = st.radio('Atopic dermatitis', ('No','Yes'), horizontal=True)
-    dermaDict = {'No':0,'Yes':1}
-    derma   = dermaDict[derma]
+    Parents highest educational level = st.radio('Academic achievement', ('Low','Low-middle','Middle','Upper-middle','Upper'), horizontal=True)
+    Parents highest educational levelDict = {'Low':1, 'Low-middle':2,'Middle':3,'Upper-middle':4,'Upper':5}
+    Parents highest educational level = Parents highest educational levelDict[Parents highest educational level]
 
-    asthma  = st.radio('Asthma', ('No','Yes'), horizontal=True)
-    asthmaDict = {'No':0,'Yes':1}
-    asthma  = asthmaDict[asthma] 
+    Household income  = st.radio('Household income', ('Low','Low-middle','Middle','Upper-middle','Upper'), horizontal=True)
+    Household incomeDict = {'Low':1, 'Low-middle':2,'Middle':3,'Upper-middle':4,'Upper':5}
+    Household income  = household_incomeDict[household_income]
 
-    aad     = derma | asthma
+    Smoking status   = st.radio('Smoking status', ('No','Yes'), horizontal=True)
+    Smoking statusDict = {'No':0,'Yes':1}
+    Smoking status   = Smoking statusDict[Smoking status]
     
-    X_test = [sex,age,bmi,region,educa,
-              acad,income,parent,
-              smoke,alcohol,stress,depress,derma,asthma]
+    Alcohol consumption = st.radio('Acohol consumption status', ('No','Yes'), horizontal=True)
+    Alcohol consumptionDict = {'No':0,'Yes':1}
+    Alcohol consumption = Alcohol consumptionDict[Alcohol consumption]
+    
+    Stress status  = st.radio('Stress status', ('Low to moderate','High to severe'), horizontal=True)
+    Stress statusDict = {'Low to moderate':1,'High to severe':2}
+    Stress status = Stress statusDict[Stress status]
 
+    depression = st.radio('Sadness and despair', ('Low to moderate','High to severe'), horizontal=True)
+    depressionDict = {'Low to moderate':0,'High to severe':1}
+    depression = depressionDict[depression]
+
+    Atopic dermatitis   = st.radio('Atopic dermatitis', ('No','Yes'), horizontal=True)
+    Atopic dermatitisDict = {'No':0,'Yes':1}
+    Atopic dermatitis   = Atopic dermatitisDict[Atopic dermatitis]
+
+    Asthma  = st.radio('Asthma', ('No','Yes'), horizontal=True)
+    AsthmaDict = {'No':0,'Yes':1}
+    Asthma  = AsthmaDict[Asthma] 
+
+    
+    X_test = [Age, Sex, Region of residence, BMI group,
+             School performance, Parents highest educational level, Household income,
+             Alcohol consumption, Smoking status, Stress status, Atopic dermatitis,
+             Asthma, 'Sadness and despair]
     result = prediction(X_test)
 
     return result
@@ -137,14 +138,18 @@ def input_values():
 
 def main():
     result = input_values()    
-    
+
     with st.sidebar:
         st.markdown(f'# Probability for suicide')
         st.markdown(f'# {result*100:.2f} %')
-
-    now = time
-    print(now.strftime('%Y-%m-%d %H:%M:%S'))
         
+        st.markdown(f'## {danger_level}')
+    
+    now = datetime.now(pytz.timezone('Asia/Seoul'))  # 한국 시간대로 변경
+    current_time = now.strftime('%Y-%m-%d %H:%M')
+    st.write(f"Current Time: {current_time}")
+
+
 
 if __name__ == '__main__':
     main()
