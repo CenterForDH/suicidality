@@ -77,15 +77,15 @@ def set_bmi(BMI):
 
 
 def input_values():
-    Region of residence  = st.radio('Region of regidence', ('Urban','Rural'), horizontal=True)
-    Region of residenceDict = {'Urban':1,'Rural':2}
-    Region of residence  = Region of residence[Region of residenceDict]
-
     Age   = st.radio('Age(year)',(13,14,15,16,17,18), horizontal=True)
 
     Sex     = st.radio('Sex',('Male','Female'), horizontal=True)
     SexDict = {'Male':1,'Female':2}
     Sex = SexDict[Sex]
+    
+    'Region of residence'  = st.radio('Region of regidence', ('Urban','Rural'), horizontal=True)
+    Region_of_residenceDict = {'Urban':1,'Rural':2}
+    'Region of residence'  = Region_of_residenceDict['Region of residence']
 
     height  = st.number_input('Height (cm)', min_value=80, max_value=190, value=130)
     weight  = st.number_input('Weight (kg)', min_value=30, max_value=100, value=50)
@@ -93,34 +93,38 @@ def input_values():
     bmi_2 = set_bmi(bmiv)
     BMI groupDict = {1:'Underweight',2:'Normal',3:'Overweight',4:'Obese'}
     st.write('BMI: ', BMI groupDict[bmi_2], round(bmiv,2))
+
+    'School performance'    = st.radio('School performance', ('Low', 'Low-middle','Middle','Upper-middle','Upper'), horizontal=True)
+    School_performanceDict = {'Low':10, 'Low-middle':9,'Middle':8,'Upper-middle':7,'Upper':6}
+    'School performance' = School_performanceDict['School performance']
     
-    Parents highest educational level = st.radio('Academic achievement', ('Low','Low-middle','Middle','Upper-middle','Upper'), horizontal=True)
-    Parents highest educational levelDict = {'Low':1, 'Low-middle':2,'Middle':3,'Upper-middle':4,'Upper':5}
-    Parents highest educational level = Parents highest educational levelDict[Parents highest educational level]
+    'Parents highest educational level' = st.radio('Parents highest educational level', ('Low','Low-middle','Middle','Upper-middle','Upper'), horizontal=True)
+    Parents_highest_educational_levelDict = {'Low':1, 'Low-middle':2,'Middle':3,'Upper-middle':4,'Upper':5}
+    'Parents highest educational level' = Parents_highest_educational_levelDict['Parents highest educational level']
 
-    Household income  = st.radio('Household income', ('Low','Low-middle','Middle','Upper-middle','Upper'), horizontal=True)
-    Household incomeDict = {'Low':1, 'Low-middle':2,'Middle':3,'Upper-middle':4,'Upper':5}
-    Household income  = household_incomeDict[household_income]
+    'Household income'  = st.radio('Household income', ('Low','Low-middle','Middle','Upper-middle','Upper'), horizontal=True)
+    Household_incomeDict = {'Low':1, 'Low-middle':2,'Middle':3,'Upper-middle':4,'Upper':5}
+    'Household income'  = Household_incomeDict['Household income']
 
-    Smoking status   = st.radio('Smoking status', ('No','Yes'), horizontal=True)
-    Smoking statusDict = {'No':0,'Yes':1}
-    Smoking status   = Smoking statusDict[Smoking status]
+    'Smoking status'   = st.radio('Smoking status', ('No','Yes'), horizontal=True)
+    Smoking_statusDict = {'No':0,'Yes':1}
+    'Smoking status'   = Smoking_statusDict['Smoking status']
     
-    Alcohol consumption = st.radio('Acohol consumption status', ('No','Yes'), horizontal=True)
-    Alcohol consumptionDict = {'No':0,'Yes':1}
-    Alcohol consumption = Alcohol consumptionDict[Alcohol consumption]
+    'Alcohol consumption' = st.radio('Acohol consumption status', ('No','Yes'), horizontal=True)
+    Alcohol_consumptionDict = {'No':0,'Yes':1}
+    'Alcohol consumption' = Alcohol_consumptionDict['Alcohol consumption']
     
-    Stress status  = st.radio('Stress status', ('Low to moderate','High to severe'), horizontal=True)
-    Stress statusDict = {'Low to moderate':1,'High to severe':2}
-    Stress status = Stress statusDict[Stress status]
+    'Stress status'  = st.radio('Stress status', ('Low to moderate','High to severe'), horizontal=True)
+    Stress_statusDict = {'Low to moderate':1,'High to severe':2}
+    'Stress status' = Stress_statusDict['Stress status']
 
-    Sadness and despair = st.radio('Sadness and despair', ('Low to moderate','High to severe'), horizontal=True)
-    Sadness and despairDict = {'Low to moderate':0,'High to severe':1}
-    Sadness and despair = Sadness and despairDict[Sadness and despair]
+    'Sadness and despair' = st.radio('Sadness and despair', ('Low to moderate','High to severe'), horizontal=True)
+    Sadness_and_despairDict = {'Low to moderate':0,'High to severe':1}
+    'Sadness and despair' = Sadness_and_despairDict['Sadness and despair']
 
-    Atopic dermatitis   = st.radio('Atopic dermatitis', ('No','Yes'), horizontal=True)
-    Atopic dermatitisDict = {'No':0,'Yes':1}
-    Atopic dermatitis   = Atopic dermatitisDict[Atopic dermatitis]
+    'Atopic dermatitis'   = st.radio('Atopic dermatitis', ('No','Yes'), horizontal=True)
+    Atopic_dermatitisDict = {'No':0,'Yes':1}
+    'Atopic dermatitis'   = Atopic_dermatitisDict['Atopic dermatitis']
 
     Asthma  = st.radio('Asthma', ('No','Yes'), horizontal=True)
     AsthmaDict = {'No':0,'Yes':1}
@@ -128,9 +132,9 @@ def input_values():
 
     
     X_test = [Age, Sex, Region of residence, BMI group,
-             School performance, Parents highest educational level, Household income,
-             Alcohol consumption, Smoking status, Stress status, Atopic dermatitis,
-             Asthma, Sadness and despair]
+             'School performance', Parents highest educational level, 'Household income,
+             'Alcohol consumption', 'Smoking status', 'Stress status', 'Atopic dermatitis',
+             Asthma, 'Sadness and despair']
     result = prediction(X_test)
 
     return result
