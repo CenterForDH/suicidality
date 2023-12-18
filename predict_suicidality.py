@@ -80,9 +80,9 @@ def input_values():
     height  = st.number_input('Height (cm)', min_value=80, max_value=190, value=130)
     weight  = st.number_input('Weight (kg)', min_value=30, max_value=100, value=50)
     bmiv = weight/((height/100)**2)
-    bmi = set_bmi(bmiv)
+    BMI_group = set_bmi(bmiv)
     BMI_groupDict = {1:'Underweight',2:'Normal',3:'Overweight',4:'Obesity'}
-    st.write('BMI: ', BMI_groupDict[bmi], round(bmiv,2))
+    st.write('BMI: ', BMI_groupDict[BMI_group], round(bmiv,2))
     
     Region  = st.radio('Region of regidence', ('Urban','Rural'), horizontal=True)
     RegionDict = {'Urban':1,'Rural':2}
