@@ -47,7 +47,7 @@ st.markdown(str(footerText), unsafe_allow_html=True)
 
 @st.cache_data
 def model_file():
-    mfile = 'finalized_model_adb.pkl'
+    mfile = 'suicidalthinking_final.pkl'
     model = pickle.load(open(mfile, 'rb'))
 
     return model
@@ -92,9 +92,9 @@ def input_values():
     School_performanceDict = {'Low':10, 'Low-middle':9,'Middle':8,'Upper-middle':7,'Upper':6}
     School_performance = School_performanceDict[School_performance]
     
-    income   = st.radio('Household income',('1Q (Lowest)','2Q','3Q','4Q (Highest)'), horizontal=True)
-    incomeDict = {'1Q (Lowest)':1,'2Q':2,'3Q':3,'4Q (Highest)':4}
-    income = incomeDict[income]
+    Household_income   = st.radio('Household income',('1Q (Lowest)','2Q','3Q','4Q (Highest)'), horizontal=True)
+    Household_incomeDict = {'1Q (Lowest)':1,'2Q':2,'3Q':3,'4Q (Highest)':4}
+    Household_income = Household_incomeDict[Household_income]
     
     Parents_highest_educational_level  = st.radio('Parents\' highest education level', ('Middle school or lower','High school','University or higher','Unknown'), horizontal=True)
     Parents_highest_educational_levelDict = {'Middle school or lower':4,'High school':3,'University or higher':2,'Unknown':1}
