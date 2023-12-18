@@ -132,9 +132,9 @@ def input_values():
 
     
     X_test = [Age, Sex, Region of residence, BMI group,
-             'School performance', Parents highest educational level, 'Household income,
-             'Alcohol consumption', 'Smoking status', 'Stress status', 'Atopic dermatitis',
-             Asthma, 'Sadness and despair']
+             School performance, Parents highest educational level, Household income,
+             Alcohol consumption, Smoking status, Stress status, Atopic dermatitis,
+             Asthma, Sadness and despair]
     result = prediction(X_test)
 
     return result
