@@ -47,9 +47,9 @@ st.markdown(str(footerText), unsafe_allow_html=True)
 
 @st.cache_data
 def model_file():
-    mfile = 'suicidalthinking_final.pkl'
-    model = pickle.load(open(mfile, 'rb'))
-
+    mfile = str(Path(__file__).parent) + '/suicialthinking_final.pkl'
+    with open(mfile, 'rb') as file:
+        model = pickle.load(file)
     return model
 
 
