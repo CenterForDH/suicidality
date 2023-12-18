@@ -86,7 +86,7 @@ def input_values():
     
     Region  = st.radio('Region of regidence', ('Urban','Rural'), horizontal=True)
     RegionDict = {'Urban':1,'Rural':2}
-    Region  = regionDict[region]
+    Region  = RegionDict[Region]
       
     School_performance    = st.radio('School performance', ('Low', 'Low-middle','Middle','Upper-middle','Upper'), horizontal=True)
     School_performanceDict = {'Low':10, 'Low-middle':9,'Middle':8,'Upper-middle':7,'Upper':6}
