@@ -114,9 +114,9 @@ def input_values():
     Stress statusDict = {'Low to moderate':1,'High to severe':2}
     Stress status = Stress statusDict[Stress status]
 
-    depression = st.radio('Sadness and despair', ('Low to moderate','High to severe'), horizontal=True)
-    depressionDict = {'Low to moderate':0,'High to severe':1}
-    depression = depressionDict[depression]
+    Sadness and despair = st.radio('Sadness and despair', ('Low to moderate','High to severe'), horizontal=True)
+    Sadness and despairDict = {'Low to moderate':0,'High to severe':1}
+    Sadness and despair = Sadness and despairDict[Sadness and despair]
 
     Atopic dermatitis   = st.radio('Atopic dermatitis', ('No','Yes'), horizontal=True)
     Atopic dermatitisDict = {'No':0,'Yes':1}
@@ -130,7 +130,7 @@ def input_values():
     X_test = [Age, Sex, Region of residence, BMI group,
              School performance, Parents highest educational level, Household income,
              Alcohol consumption, Smoking status, Stress status, Atopic dermatitis,
-             Asthma, 'Sadness and despair]
+             Asthma, Sadness and despair]
     result = prediction(X_test)
 
     return result
