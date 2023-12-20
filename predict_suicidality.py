@@ -87,11 +87,7 @@ def input_values():
     region  = st.radio('Region of regidence', ('Urban','Rural'), horizontal=True)
     regionDict = {'Urban':1,'Rural':2}
     region  = regionDict[region]
-    
-    educa   = st.radio('Grade', ('Middle school','High school'), horizontal=True)
-    educaDict = {'Middle school':1,'High school':2}
-    educa = educaDict[educa]
-    
+        
     acad    = st.radio('School performance', ('Low', 'Low-middle','Middle','Upper-middle','Upper'), horizontal=True)
     acadDict = {'Low':10, 'Low-middle':9,'Middle':8,'Upper-middle':7,'Upper':6}
     acad = acadDict[acad]
@@ -130,7 +126,7 @@ def input_values():
 
     aad     = derma | asthma
     
-    X_test = [sex,age,bmi,region,educa,
+    X_test = [sex,age,bmi,region,
               acad,income,parent,
               smoke,alcohol,stress,depress,derma,asthma]
 
