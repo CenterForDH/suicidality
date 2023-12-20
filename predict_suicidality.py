@@ -47,10 +47,13 @@ st.markdown(str(footerText), unsafe_allow_html=True)
 
 @st.cache_data
 def model_file():
-    mfile = 'suicialthinking_finalized_model.pkl'
-    model = pickle.load(open(mfile, 'rb'))
-
-    return model
+    try:
+        mfile = 'suicialthinking_finalized_model.pkl'
+        model = pickle.load(open(mfile, 'rb'))
+        return model
+    except Exception as e:
+        st.error(f"Error loading model: {e}")
+        return None
 
 
 def prediction(X_test):
