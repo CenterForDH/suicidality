@@ -47,7 +47,7 @@ st.markdown(str(footerText), unsafe_allow_html=True)
 
 @st.cache_data
 def model_file():
-    mfile = 'suicialthinking_final.pkl'
+    mfile = 'suicialthinking_finalized_model.pkl'
     model = pickle.load(open(mfile, 'rb'))
 
     return model
